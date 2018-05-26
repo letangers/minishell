@@ -1,11 +1,20 @@
 #include "parse.h"
 #include <iostream>
+#include <string>
+#include <signal.h>
 
 using namespace std;
+
+void handle(int sig){
+	cout<<endl<<"[minishell]&";
+	cin.sync();
+}
 
 int main(void){
 //shel主循环
 
+	signal(SIGINT,handle);
+	signal(SIGQUIT,SIG_IGN);
 	while(true){
 		cout<<"[minishell]$";
 		cin.sync();
