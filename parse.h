@@ -6,17 +6,21 @@
   #define PIPELINE 5 //一个管道行中简单命令的最多个数
   #define MAXNAME 100 //IO重定向文件名的最大长度
 
-
+#include <string>
+using namespace std;
 typedef struct args
 {
-	char *args[MAXARG+1];
+	string args[MAXARG+1];
 }ARGS;
 
 //保存命令行输入
-char cmdline[MAXLINE+1];
+string cmdline;
 
 //用来存放每个参数
 ARGS arg;
+
+//保存上一次的参数下标
+int index=MAXARG;
 
 void shell_loop(void);
 int read_command(void);
